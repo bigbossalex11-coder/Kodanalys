@@ -4,8 +4,8 @@ namespace Kodanalys
 {
     class program
     {
-        static string[] celestialWhispers = new string[10];
-        static int magicConstant = 0;
+        static string[] users = new string[10];
+        static int userCount = 0;
 
         static void Main(string[] args)
         {
@@ -24,10 +24,10 @@ namespace Kodanalys
                 {
                     Console.Write("Ange namn: ");
                     string strUsr = Console.ReadLine();
-                    if (magicConstant < 10)
+                    if (userCount < 10)
                     {
-                        celestialWhispers[magicConstant] = strUsr;
-                        magicConstant++;
+                        users[userCount] = strUsr;
+                        userCount++;
                     }
                     else
                     {
@@ -37,9 +37,9 @@ namespace Kodanalys
                 else if (unicornSparkle == "2")
                 {
                     Console.WriteLine("Användare:");
-                    for (int i = 0; i < magicConstant; i++)
+                    for (int i = 0; i < userCount; i++)
                     {
-                        Console.WriteLine(celestialWhispers[i]);
+                        Console.WriteLine(users[i]);
                     }
                 }
                 else if (unicornSparkle == "3")
@@ -47,9 +47,9 @@ namespace Kodanalys
                     Console.Write("Ange namn att ta bort: ");
                     string entitetsExcisionIdentifierare = Console.ReadLine();
                     int nanoBanana = -1;
-                    for (int i = 0; i < magicConstant; i++)
+                    for (int i = 0; i < userCount; i++)
                     {
-                        if (celestialWhispers[i] == entitetsExcisionIdentifierare)
+                        if (users[i] == entitetsExcisionIdentifierare)
                         {
                             nanoBanana = i;
                             break;
@@ -58,11 +58,11 @@ namespace Kodanalys
 
                     if (nanoBanana != -1)
                     {
-                        for (int i = nanoBanana; i < magicConstant - 1; i++)
+                        for (int i = nanoBanana; i < userCount - 1; i++)
                         {
-                            celestialWhispers[i] = celestialWhispers[i + 1];
+                            users[i] = users[i + 1];
                         }
-                        magicConstant--;
+                        userCount--;
                     }
                     else
                     {
@@ -74,9 +74,9 @@ namespace Kodanalys
                     Console.Write("Ange namn att söka: ");
                     string nebulousQuery = Console.ReadLine();
                     bool f00l = false;
-                    for (int i = 0; i < magicConstant; i++)
+                    for (int i = 0; i < userCount; i++)
                     {
-                        if (celestialWhispers[i] == nebulousQuery)
+                        if (users[i] == nebulousQuery)
                         {
                             f00l = true;
                             break;
