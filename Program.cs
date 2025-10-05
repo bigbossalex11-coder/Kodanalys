@@ -2,11 +2,8 @@
 
 namespace Kodanalys
 {
-    class program
+    class Program
     {
-        static string[] numberOfUsers = new string[10];
-        static int howManyUsers = 0;
-
         static List<string> users = new List<string>();
         
         static void Main(string[] args)
@@ -22,17 +19,16 @@ namespace Kodanalys
                 Console.WriteLine("5. Avsluta");
                 string userChoice = Console.ReadLine();
 
-                if (userChoice == "1")
+                switch (userChoice)
                 {
-                    Console.Write("Ange namn: ");
-                    string name = Console.ReadLine();
+                    case "1":
+                        Console.Write("Ange namn: ");
+                        string name = Console.ReadLine();
+                        users.Add(name);
+                        Console.WriteLine("Användare är tillagd");
+                        break;
+                case "2":
 
-                    users.Add(name);
-                    Console.WriteLine("Användare är tillagd");
-
-                }
-                else if (userChoice == "2")
-                {
                     Console.WriteLine("Användare:");
                     if (users.Count == 0)
                     {
@@ -45,38 +41,43 @@ namespace Kodanalys
                             Console.WriteLine(user);
                         }
                     }
-                }
-                else if (userChoice == "3")
-                {
+                    break;
+
+                case "3":
+
                     Console.Write("Ange namn att ta bort: ");
                     string nameToRemove = Console.ReadLine();
 
                     if (users.Remove(nameToRemove))
-                    {
                         Console.WriteLine("Användaren togs bort");
-                    }
+
                     else
-                    {
                         Console.WriteLine("Användaren hittades inte.");
-                    }
-                }
-                else if (userChoice == "4")
-                {
-                    Console.Write("Ange namn att söka: ");
-                    string searchName = Console.ReadLine();
+                    break; 
+                case "4":
+
+                        Console.Write("Ange namn att söka: ");
+                        string searchName = Console.ReadLine();
 
                     if (users.Contains(searchName))
-                    {
                         Console.WriteLine("Användaren finns i listan");
-                    }
+
                     else
-                    {
                         Console.WriteLine("Användaren hittades inte");
-                    }
-                }
-                else if (userChoice == "5")
+                    break;
+
+                case "5":
+
+                    return;
                 
+                    default:
+                        Console.WriteLine("Ogiltigt val. FÖrsök igen.");
                         break;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Tryck på valfri tangent för att fortsätta");
+                Console.ReadKey();
+                Console.Clear();
             }
         }
     }
