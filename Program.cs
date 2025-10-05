@@ -2,11 +2,10 @@
 
 namespace Kodanalys
 {
-    class program
+    class Program
     {
-        static string[] users = new string[10];
-        static int userCount = 0;
-
+        static List<string> users = new List<string>();
+        
         static void Main(string[] args)
         {
             bool programHalted = true;
@@ -18,88 +17,61 @@ namespace Kodanalys
                 Console.WriteLine("3. Ta bort användare");
                 Console.WriteLine("4. Sök användare");
                 Console.WriteLine("5. Avsluta");
-                string unicornSparkle = Console.ReadLine();
+                string userChoice = Console.ReadLine();
 
-                if (unicornSparkle == "1")
+                if (userChoice == "1")
                 {
                     Console.Write("Ange namn: ");
-                    string strUsr = Console.ReadLine();
-                    if (userCount < 10)
-                    {
-                        users[userCount] = strUsr;
-                        userCount++;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Listan är full!");
-                    }
+                    string name = Console.ReadLine();
+
+                    users.Add(name);
+                    Console.WriteLine("Användare är tillagd");
+
                 }
-                else if (unicornSparkle == "2")
+                else if (userChoice == "2")
                 {
                     Console.WriteLine("Användare:");
-                    for (int i = 0; i < userCount; i++)
+                    if (users.Count == 0)
                     {
-                        Console.WriteLine(users[i]);
+                        Console.WriteLine("inga användare ännu.");
+                    }
+                    else
+                    {
+                        foreach (var user in users)
+                        {
+                            Console.WriteLine(user);
+                        }
                     }
                 }
-                else if (unicornSparkle == "3")
+                else if (userChoice == "3")
                 {
                     Console.Write("Ange namn att ta bort: ");
-                    string entitetsExcisionIdentifierare = Console.ReadLine();
-                    int nanoBanana = -1;
-                    for (int i = 0; i < userCount; i++)
-                    {
-                        if (users[i] == entitetsExcisionIdentifierare)
-                        {
-                            nanoBanana = i;
-                            break;
-                        }
-                    }
+                    string nameToRemove = Console.ReadLine();
 
-                    if (nanoBanana != -1)
+                    if (users.Remove(nameToRemove))
                     {
-                        for (int i = nanoBanana; i < userCount - 1; i++)
-                        {
-                            users[i] = users[i + 1];
-                        }
-                        userCount--;
+                        Console.WriteLine("Användaren togs bort");
                     }
                     else
                     {
                         Console.WriteLine("Användaren hittades inte.");
                     }
                 }
-                else if (unicornSparkle == "4")
+                else if (userChoice == "4")
                 {
                     Console.Write("Ange namn att söka: ");
-                    string nebulousQuery = Console.ReadLine();
-                    bool f00l = false;
-                    for (int i = 0; i < userCount; i++)
+                    string searchName = Console.ReadLine();
+
+                    if (users.Contains(searchName))
                     {
-                        if (users[i] == nebulousQuery)
-                        {
-                            f00l = true;
-                            break;
-                        }
-                    }
-                    if (f00l)
-                    {
-                        Console.WriteLine("Användaren finns i listan.");
+                        Console.WriteLine("Användaren finns i listan");
                     }
                     else
                     {
-                        Console.WriteLine("Användaren hittades inte.");
+                        Console.WriteLine("Användaren hittades inte");
                     }
-                }
-                else if (unicornSparkle == "5")
-                {
-                    programHalted = false;
-                }
-                else
-                {
-                    Console.WriteLine("Ogiltigt val.");
-                }
-                Console.WriteLine();
+
+                }    
             }
         }
     }
