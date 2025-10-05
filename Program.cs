@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design;
 
 namespace Kodanalys
 {
@@ -8,8 +9,8 @@ namespace Kodanalys
         
         static void Main(string[] args)
         {
-            bool programHalted = true;
-            while (programHalted)
+            
+            while (true)
             {
                 Console.WriteLine("Välj ett alternativ:");
                 Console.WriteLine("1. Lägg till användare");
@@ -70,8 +71,10 @@ namespace Kodanalys
                     {
                         Console.WriteLine("Användaren hittades inte");
                     }
-
-                }    
+                }
+                else if (userChoice == "5")
+                
+                        break;
             }
         }
     }
